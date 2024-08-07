@@ -30,8 +30,17 @@ docker compose down
 
 ~~~
 docker exec -it nginx bin/sh
-docker exec -it php-fpm bash
-docker exec -it mysql bash
-docker exec -it phpmyadmin bash
 ~~~
 
+~~~
+docker exec -it php-fpm bash
+~~~
+
+~~~
+docker exec -it mysql bash
+~~~
+
+~~~
+docker exec -it phpmyadmin bash
+~~~
+7. For using in the browser go to http://localhost
