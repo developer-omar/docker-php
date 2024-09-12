@@ -2,8 +2,6 @@ ARG PHP_VERSION
 # php version
 FROM php:${PHP_VERSION}-fpm
 
-COPY composer*.json /var/www
-
 # cd to that path
 WORKDIR /var/www/
 
