@@ -16,31 +16,35 @@ You can use this configuration by following these steps
 3. You can configure domains for php projects in nginx/conf.d/
 4. You can start the environment with:
 
-~~~
-docker compose up -d
-~~~
+    ~~~bash
+    docker compose up -d
+    ~~~
 
 5. You can finish the environment with:
 
-~~~
-docker compose down
-~~~
+    ~~~bash
+    docker compose down
+    ~~~
 
 6. If you want to enter to a some container you have to use any of the following commands:
 
-~~~
-docker exec -it nginx bin/sh
-~~~
+    ~~~bash
+    docker exec -it nginx bin/sh
+    ~~~
 
-~~~
-docker exec -it php-fpm bash
-~~~
+    ~~~bash
+    docker exec -it php-fpm bash
+    ~~~
 
-~~~
-docker exec -it mysql bash
-~~~
+    ~~~bash
+    docker exec -it mysql bash
+    ~~~
 
-~~~
-docker exec -it phpmyadmin bash
-~~~
-7. For using in the browser go to http://localhost
+    ~~~bash
+    docker exec -it phpmyadmin bash
+    ~~~
+
+7. For using in the browser go to:
+
+    - Localhost: [http://localhost](http://localhost)
+    - Phpmyadmin: [http://localhost:8080/](http://localhost:8080/)

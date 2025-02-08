@@ -1,0 +1,19 @@
+{
+    "name": "root/www",
+    "description": "Servidor de Pruebas para PHP",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Root\\Www\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Omar Enrique"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.2"
+    }
+}
