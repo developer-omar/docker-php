@@ -18,19 +18,38 @@ RUN apt-get update && apt-get install -y \
     jpegoptim optipng pngquant gifsicle \
     vim \
     git \
-    curl
+    curl \
+    libxml2-dev
 
 # installing php extensions
-RUN docker-php-ext-install pdo_mysql zip exif pcntl
+RUN docker-php-ext-install pdo_mysql zip exif pcntl mbstring xml mysqli
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
-RUN docker-php-ext-install gd
+RUN docker-php-ext-install gd 
 
 # installing composer
 RUN curl -s https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 
-# installing composer dependencies
+# Update and create an user and group with same IDs
+ARG DEV_USER
+RUN groupadd -g 1000 ${DEV_USER} && \
+      useradd -u 1000 -g 1000 -m -s /bin/bash ${DEV_USER}
+
+# Change to USER created
+USER ${DEV_USER}
+
+ENV PATH="/root/.composer/vendor/bin:/home/devuser/.composer/vendor/bin:${PATH}"
+
+# Installing php-cs-fixer
+# RUN composer global require friendsofphp/php-cs-fixer
 # RUN composer install --no-ansi --no-dev --no-interaction --no-progress --optimize-autoloader --no-scripts
+
+# Installing laravel cli 
+RUN composer global require laravel/installer
+
+# Adding path for using php-cs-fixer in every project in www
+# ENV COMPOSER_BIN="/root/.composer/vendor/bin"
+# ENV PATH="$PATH:$COMPOSER_BIN"
 
 # copy all files to /var/www
 # COPY . .
